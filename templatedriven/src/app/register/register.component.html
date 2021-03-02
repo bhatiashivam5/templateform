@@ -1,0 +1,233 @@
+<mat-card>
+  <mat-toolbar><h2>Template Driven Form</h2></mat-toolbar>
+  <br /><br />
+
+  <form
+    name="form"
+    #userform="ngForm"
+    (ngSubmit)="userform.form.valid && getValues(userform)"
+    noValidate>
+    <!-- username -->
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        required
+        [(ngModel)]="model.username"
+        name="username"
+        #username="ngModel"
+        placeholder="Your Name"
+        ngModelname="username"
+        [ngClass]="{ 'is-invalid': userform.submitted && username.invalid }"
+        minlength="5"
+      />
+    </mat-form-field>
+    <br /><br />
+
+    <!-- mat error -->
+    <mat-error *ngIf="userform.submitted && username.invalid">
+      <mat-error *ngIf="username.errors?.required">
+        Name should be enter
+      </mat-error>
+
+      <mat-error *ngIf="username.errors?.minlength">
+        Name must be at least 5 characters long.
+      </mat-error>
+    </mat-error>
+    <br />
+    <!-- radio buttons -->
+    <mat-radio-group
+      aria-label="Select an Gender:"
+      color="primary"
+      name="gender"
+      #gender="ngModel"
+      [(ngModel)]="model.gender"
+      required
+      [ngClass]="{ 'is-invalid': userform.submitted && gender.invalid }"
+    >
+      <mat-radio-button value="Male">Male &nbsp;</mat-radio-button>
+
+      <mat-radio-button value="Female">Female &nbsp;</mat-radio-button>
+
+      <mat-radio-button value="Others">Others</mat-radio-button>
+    </mat-radio-group>
+    <br />
+    <br />
+
+    <mat-error *ngIf="userform.submitted && gender.invalid">
+      <mat-error *ngIf="gender.errors?.required">
+        Please select gender
+      </mat-error>
+    </mat-error>
+
+    <!-- useremail -->
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Your Email"
+        ngModel
+        name="useremail"
+        required
+        [(ngModel)]="model.useremail"
+        name="useremail"
+        #useremail="ngModel"
+        [ngClass]="{ 'is-invalid': userform.submitted && useremail.invalid }"
+        ngModelname="useremail"
+        minlength="5"
+      />
+    </mat-form-field>
+    <br /><br />
+    <mat-error *ngIf="userform.submitted && useremail.invalid">
+      <mat-error *ngIf="useremail.errors?.required">
+        Email should be enter
+      </mat-error>
+
+      <mat-error *ngIf="useremail.errors?.minlength">
+        Email must be at least 5 characters long.</mat-error
+      >
+    </mat-error>
+
+    <!-- contact -->
+    <mat-form-field>
+      <input
+        type="tel"
+        matInput
+        placeholder="Contact"
+        ngModel
+        name="contact"
+        required
+        [(ngModel)]="model.contact"
+        name="contact"
+        #contact="ngModel"
+        [ngClass]="{ 'is-invalid': userform.submitted && contact.invalid }"
+        ngModelname="contact"
+        minlength="10"
+      />
+    </mat-form-field>
+    <br /><br />
+    <mat-error *ngIf="userform.submitted && contact.invalid">
+      <mat-error *ngIf="contact.errors?.required">
+        Contact no should be enter
+      </mat-error>
+
+      <mat-error *ngIf="contact.errors?.minlength">
+        Contact no must be at least 10 numbers long.</mat-error
+      >
+    </mat-error>
+
+    <br />
+
+    <!-- password validation -->
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="password"
+        required
+        [(ngModel)]="model.password"
+        name="password"
+        #password="ngModel"
+        [ngClass]="{ 'is-invalid': userform.submitted && password.invalid }"
+        ngModelname="password"
+        minlength="5"
+      /> </mat-form-field
+    ><br /><br />
+
+    <mat-error *ngIf="userform.submitted && password.invalid">
+      <mat-error *ngIf="password.errors?.required">
+        Password should be enter
+      </mat-error>
+
+      <mat-error *ngIf="password.errors?.minlength">
+        Password must be at least 5 characters long.</mat-error
+      >
+    </mat-error>
+    <!-- password validation -->
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Confirm Password"
+        ngModel
+        name="confirmpassword"
+        [(ngModel)]="model.confirmpassword"
+        name="confirmpassword"
+        #confirmpassword="ngModel"
+        [ngClass]="{
+          'is-invalid': userform.submitted && confirmpassword.invalid
+        }"
+        ngModelname="confirmpassword"
+        pattern="{{ password.value }}"
+        minlength="5"
+        required
+      />
+    </mat-form-field>
+    <br /><br />
+
+    <mat-error *ngIf="userform.submitted && confirmpassword.invalid">
+      <mat-error *ngIf="confirmpassword.errors?.required">
+        Confirm password should be enter
+      </mat-error>
+      <mat-error *ngIf="confirmpassword.errors?.pattern">
+        Password does not match confirm password
+      </mat-error>
+    </mat-error>
+
+    <!-- location -->
+    <mat-form-field>
+      <mat-select
+        placeholder="location"
+        name="location"
+        #location="ngModel"
+        [(ngModel)]="model.location"
+        required
+        [ngClass]="{ 'is-invalid': userform.submitted && location.invalid }"
+      >
+        <mat-option value="chandigarh">Ludhiana</mat-option>
+        <mat-option value="mohali">Jalandhar</mat-option>
+        <mat-option value="Benglore">Delhi</mat-option>
+        <mat-option value="Gurgoan">Ambala</mat-option>
+      </mat-select> </mat-form-field
+    ><br /><br />
+
+    <mat-error *ngIf="userform.submitted && location.invalid">
+      <mat-error *ngIf="location.errors?.required">
+        Select the location
+      </mat-error>
+    </mat-error>
+    <!-- location close -->
+
+    <mat-checkbox
+      color="primary"
+      name="terms"
+      #terms="ngModel"
+      [(ngModel)]="model.terms"
+      required
+      [ngClass]="{ 'is-invalid': userform.submitted && terms.invalid }"
+      >I Agree to Terms & Conditions</mat-checkbox
+    >
+    <br /><br />
+
+    <mat-error *ngIf="userform.submitted && terms.invalid">
+      <mat-error *ngIf="terms.errors?.required">Accept terms</mat-error>
+    </mat-error>
+    <br /><br />
+
+    <!-- button  -->
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+
+    >
+      Submit</button
+    >&nbsp;&nbsp;
+    <button type="submit" mat-raised-button color="primary">Clear</button>
+    <br /><br />
+  </form>
+  <br /><br />
+</mat-card>
+
