@@ -14,8 +14,10 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 import { SigninComponent } from './signin/signin.component'
+import { ReactiveFormsModule } from '@angular/forms'
+
 
 
 
@@ -37,7 +39,8 @@ import { SigninComponent } from './signin/signin.component'
     MatRadioModule,
     MatSelectModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [],

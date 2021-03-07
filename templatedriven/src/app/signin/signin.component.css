@@ -1,0 +1,30 @@
+
+mat-card{
+  max-width: 500px;
+  margin: 7%;
+  min-height: 70%;
+  border-radius: 10px;
+
+}
+
+label{
+  font-size: 150%;
+  color:white;
+}
+
+mat-toolbar{
+  background-color:#4A235A;
+  border-radius: 10px;
+  width:85%;
+  color: white;
+
+}
+
+mat-form-field{
+  width: 75%;
+
+}
+
+.btn{
+  background-color:#4A235A;
+}

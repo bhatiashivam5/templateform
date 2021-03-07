@@ -1,0 +1,153 @@
+
+<mat-card>
+  <mat-toolbar>
+      Reactive Form
+  </mat-toolbar>
+  <br><br>
+  <form [formGroup]="Registerform" (ngSubmit)="getDetails()">
+    <!-- username  -->
+    <mat-form-field>
+          <input type="text" matInput placeholder="Your name"  formControlName="username"
+          [ngClass]="{'is-invalid': Submitted && f.username.errors}">
+      </mat-form-field>
+      <br><br>
+<mat-error *ngIf="Submitted && f.username.errors">
+<mat-error *ngIf="f.username.errors?.required">
+  Name should be enter
+</mat-error>
+</mat-error>
+<!-- useremail -->
+      <mat-form-field>
+          <input type="text" matInput placeholder="Your email" formControlName="email"
+          [ngClass]="{'is-invalid': Submitted && f.email.errors}">
+      </mat-form-field>
+      <br><br>
+
+      <mat-error *ngIf="Submitted && f.email.errors">
+        <mat-error *ngIf="f.email.errors?.required">
+          Email should be enter
+        </mat-error>
+        <mat-error *ngIf="f.email.errors?.email">
+          Email should not be in email format
+        </mat-error>
+        </mat-error>
+        <!-- contact -->
+      <mat-form-field>
+          <input type="text" matInput placeholder="Contact" formControlName="contact"
+          [ngClass]="{'is-invalid': Submitted && f.contact.errors}">
+      </mat-form-field>
+      <br><br>
+      <mat-error *ngIf="Submitted && f.contact.errors">
+        <mat-error *ngIf="f.contact.errors?.required">
+          Contact should be enter
+        </mat-error>
+        <mat-error *ngIf="f.contact.errors?.minlength">
+          contact should be 10 numbers
+        </mat-error>
+        </mat-error>
+
+
+
+
+      <!-- password -->
+      <mat-form-field>
+        <input type="text" matInput placeholder="Password" formControlName="password"
+        [ngClass]="{'is-invalid': Submitted && f.password.errors}">
+    </mat-form-field>
+    <br><br>
+
+    <mat-error *ngIf="Submitted && f.password.errors">
+      <mat-error *ngIf="f.password.errors?.required">
+        Password should be enter
+      </mat-error>
+      <mat-error *ngIf="f.password.errors?.minlength">
+        Password must be 8 characters long
+      </mat-error>
+      </mat-error>
+
+ <!-- confirmpassword -->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Confirm password" formControlName="confirmpassword"
+      [ngClass]="{'is-invalid': Submitted && f.confirmpassword.errors}">
+  </mat-form-field>
+  <br><br>
+   <mat-error *ngIf="Submitted && f.confirmpassword.errors">
+    <mat-error *ngIf="f.confirmpassword.errors?.required">
+     Confirm Password should be enter
+    </mat-error>
+    <mat-error *ngIf="f.confirmpassword.errors?.mustMatch">
+      Password must match
+    </mat-error>
+    </mat-error>
+
+
+
+  <!-- location -->
+      <h4>Location</h4>
+<mat-form-field appearance="fill" >
+  <mat-label>Select State</mat-label>
+  <mat-select matNativeControl required formControlName="location"
+  [ngClass]="{'is-invalid': Submitted && f.location.errors}">
+    <mat-option value="Punjab">Punjab</mat-option>
+    <mat-option value="Delhi">Delhi</mat-option>
+    <mat-option value="Rajasthan">Rajasthan</mat-option>
+    <mat-option value="Haryana">Haryana</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-error *ngIf="Submitted && f.location.errors">
+  <mat-error *ngIf="f.location.errors?.required">
+    Location should be enter
+  </mat-error>
+  </mat-error>
+
+
+
+
+
+
+<!-- gender -->
+      <br><br>
+      <p>Select Gender<br></p>
+      <mat-radio-group type="radio" matInput formControlName="gender" aria-label="Select an option" color="primary"
+      [ngClass]="{'is-invalid': Submitted && f.gender.errors}">
+        <mat-radio-button value="Male">Male &nbsp;</mat-radio-button>
+        <mat-radio-button value="Female">Female &nbsp;</mat-radio-button>
+        <mat-radio-button value="Others">Others &nbsp;</mat-radio-button>
+      </mat-radio-group>
+      <br><br>
+
+       <mat-error *ngIf="Submitted && f.gender.errors">
+        <mat-error *ngIf="f.gender.errors?.required">
+          Gender should be enter
+        </mat-error>
+       </mat-error>
+
+
+
+
+
+
+
+
+
+
+     <!-- checkbox -->
+      <mat-checkbox type="checkbox" matInput formControlName="checkbox" class="example-margin" color="primary"
+      [ngClass]="{'is-invalid': Submitted && f.checkbox.errors}">Accept terms & conditions</mat-checkbox>
+
+    <br><br>
+
+   <mat-error *ngIf="Submitted && f.checkbox.errors">
+        <mat-error *ngIf="f.checkbox.errors?.required">
+          Please accept terms & conditions
+        </mat-error>
+       </mat-error>
+
+<br><br>
+
+
+    <!-- button -->
+    <button type="submit" mat-raised-button color="primary" class="btn">Submit</button>
+  </form>
+</mat-card>
